@@ -1,0 +1,22 @@
+ Exercice: Créé une base de données magasin
+-- Créé une table produit qui contient les colonnes suivantes:
+-- id -> INT PRIMARY KEY AUTO_INCREMENT NOT NULL
+-- nom_produit -> débrouillez-vous
+-- catégorie_produit -> débrouillez-vous
+-- reference_produit -> débrouillez-vous
+-- prix_produit -> débrouillez-vous
+-- stock_produit -> débrouillez-vous
+-- date_ajout -> débrouillez-vous
+-- Insérer au moins 20 produits
+-- Afficher tous les produits classé du plus récent au plus ancien
+-- Afficher les 10 premiers produits
+-- Afficher les 10 derniers produits
+-- Ajouter une colonne date_vente
+-- Afficher les produits entre 2 date de vente
+-- Afficher les 10 derniers produits
+-- Afficher les 10 produits du milieu
+-- Afficher les produits commencent par une lettre spécifique
+
+
+
+
