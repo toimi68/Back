@@ -67,3 +67,17 @@ afficher un nombre limite de donnée en sautant des lignes
     SELECT*FROM STAGIAIRES limit 1?2 .
     LE 1ER CHIFFRE REPRESENTE L OFFSET dc le nb  de ligne ignorées et le 2nd le nb de donnees à afficher
     CREATE  TABLE xxx(id INT(3)primary key auto_increment not null)
+    pour selectioner selon l'anciennete du vehicule
+    select*from voitures order by voitures desc;
+    create database magasin;
+    table produit qui contient les colonnes suivantes
+    create table voitures(id-car INT(3) primary key auto_increment not null,marque varchar,(50)model varchar(60),couleur varchar(30)prix(float),date de vente date)
+---pour ajouter une colonne-------ici colonne stock
+ALTER TABLE voitures ADD stock INT(3);
+pour afficher la date 
+type=>INT
+date_ajout
+type date=> a-m-jour
+         =>a-m-j  h-m-s 
+         timestamp (les secondes ecoulées depuis 01-01-1970)
+=>YEAR -1999--
