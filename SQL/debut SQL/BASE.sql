@@ -64,10 +64,10 @@ SELECT *from bonbons WHERE id_bonbons NOT BETWEEN 3 AND 6.
 --------afficher un nombre limité de données--------
 SELECT*FROM stagiaires LIMIT 2;
 afficher un nombre limite de donnée en sautant des lignes
-    SELECT*FROM STAGIAIRES limit 1?2 .
+    SELECT*FROM STAGIAIRES limit 1,2.
     LE 1ER CHIFFRE REPRESENTE L OFFSET dc le nb  de ligne ignorées et le 2nd le nb de donnees à afficher
     CREATE  TABLE xxx(id INT(3)primary key auto_increment not null)
-    pour selectioner selon l'anciennete du vehicule
+    pour selectioner selon l anciennete du vehicule
     select*from voitures order by voitures desc;
     create database magasin;
     table produit qui contient les colonnes suivantes
