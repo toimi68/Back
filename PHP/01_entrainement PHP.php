@@ -216,25 +216,25 @@ if($a==10 XOR$b==6)
          {
              echo "Vous êtes fou!! C'est Mario le meilleur<br>";
          }
-//echo '<hr><h2 class='display-4 text-center'>FONCTIONS PREDEFINI</h2><hr>';
-//echo 'date:''.date("d/m/y") . '<br>;
-/*qd on utilise un fonct° predefini on se demande ce qu'on  doit lui envoyer comme argumentet surtout ce qu'elle retourne*/
-//echo '<hr><h2 class="display-4 text-center">Traitement des chaines (iconv_strlen,strpos,substr)</h2>></h2>'
+echo '<hr><h2 class="display-4 text-center">FONCTIONS PREDEFINI</h2><hr>';
+echo 'date'.date("d/m/y") . '<br>';
+//qd on utilise un fonct° predefini on se demande ce qu on  doit lui envoyer comme argumentet surtout ce qu elle retourne
+ echo '<hr><h2 class="display-4 text-center">Traitement des chaines (iconv_strlen,strpos,substr)</h2>></h2>'
 /*strops() string posit°/ fonct° predefini qui permet de trouver la position d'un caractere ds une chaine d'arguments<mat-checkbox formControlName="formControlName" align="start"
              
     1- la chaine ds laquelle ns souhaitons chercher
     2-le caractére a trouvé contexte :utile pr verifier le format d'un email*/
 
 
-    /*$email1="gregorylacroix78@gmail.com";
-    echo strops($email1,"@")*/
+    $email1="gregorylacroix78@gmail.com";
+    echo strops($email1,"@");
 
-/*$email2='bonjour';
+$email2="bonjour";
 echo strpos($email2,"@");
-/*cette ligne ne sort rien pourtant il y a quelque chose dedans: FALSE!
+/*cette ligne ne sort rien pourtant il y a quelque chose dedans: FALSE!*/
 var_dump(strpos($email2,"@"))/* c'est une instruct° d'affichage amelioré qu'on utilise en developpement*/
-/*iconv_strlen()*/
-/*$phrase ="mettez une phrase ici";
+iconv_strlen($phrase).'<br>';
+$phrase ="mettez une phrase ici";
 echo iconv_strlen($phrase).'<br>';
 //iconv_strlen()est une fonct° predefini qui permet de calculer la taille d'une chaine decaractere
 //contexte on peut utiliser pour savoir si le pseudo et le mdp ont la tailloe conforme pour une inscription
@@ -244,14 +244,14 @@ substr()
     deserunt necessitatibus repudiandae corrupti laudantium quam consequatur?
      Quasi, dolor non quae culpa consectetur quisquam."
 
-echo substr($texte,0,20) . "...<a
-href="">Lire la suite </a>";
+echo substr($texte,0,20) . "<a
+href=''>Lire la suite </a>";
 /*substr() est une fonct° predefinie qui permet le retour de la chaine argument
 /* 1-la chaine à couper 
 2- posit° du debut 
 3- posit° de la fin
 contexte substr est utilisé pour afficher des actualité avec des accroches*/
-/*echo '<hr><h2 class="display-4
+echo '<hr><h2 class="display-4
 texte-center">Fonct° utilisateur</h2><hr>';
 //les fonct° utilisateur permette d'éviter les copier/coller d'un code recurrant,on l'encapsule ds une fonct°
 //on declare tjrs une fonction avec le mot-clé "function"suivi du nom que ns definissons
@@ -303,35 +303,33 @@ function meteo($saison,$temperature)
 }
 
 //---EXO-------------gérer le 's' de degres en fonction de la t°,pensez à gérer les articles 'en' ete ou 'au'     *printemps
-/*$saison1="en été"
-$saison1="en hivers"
-$saison1="en automne"
-$saison2="au printemps"*/
+
 function exometeo($saison1,$saison2,$temperature)
+{
 if($temperature>1||$temperature<-1)
 $degre="degrés";
 else
 $degre="degré";
-{
+if($saison=='printemps')
+$art='au';
+else
+$art='en';
+
     return "nous sommes en $saison et il fait $temperature $degre<br>";
 }
 echo exometeo('été',2);
 echo exometeo('autonme',-2);
 echo exometeo('hiver',0);
 echo exometeo('printemps',1);
-echo exometeo('printemps',-1);
-if($saison=='printemps')
-$art='au';
-else $art='en';
-return "nous sommes $art $saison et il fait $temperature $degres<br>";
-
+echo exometeo('printemps',12);
+echo '<hr><h2 class="display-4 text-center">ESPACE GLOBAL ET LOCAL(iconv_strlen,strpos,substr)</h2><hr>';
 //ESPACE GLOBAL ET LOCAL
 
 function jourSemaine()
-    {
+    {//espace local
         $jour="jeudi";
         return $jour;
-        echo'allo!!';
+        echo"allo!!";
     }
 echo $jour;//!\\ ne fonct° pas car cette variable n'est connue qu'à l'interieur de la fonct°
 //il n'est pas possible d'appeler une variable ds l'espace locale (ds une fonct°)vers l'espace global (espace par defaut de php)
