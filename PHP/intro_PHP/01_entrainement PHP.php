@@ -219,32 +219,32 @@ if($a==10 XOR$b==6)
 echo '<hr><h2 class="display-4 text-center">FONCTIONS PREDEFINI</h2><hr>';
 echo 'date'.date("d/m/y") . '<br>';
 //qd on utilise un fonct° predefini on se demande ce qu on  doit lui envoyer comme argumentet surtout ce qu elle retourne
- echo '<hr><h2 class="display-4 text-center">Traitement des chaines (iconv_strlen,strpos,substr)</h2>></h2>'
+ echo '<hr><h2 class="display-4 text-center">Traitement des chaines (iconv_strlen,strpos,substr)</h2>></h2>';
 /*strops() string posit°/ fonct° predefini qui permet de trouver la position d'un caractere ds une chaine d'arguments<mat-checkbox formControlName="formControlName" align="start"
              
     1- la chaine ds laquelle ns souhaitons chercher
     2-le caractére a trouvé contexte :utile pr verifier le format d'un email*/
 
 
-    $email1="gregorylacroix78@gmail.com";
-    echo strops($email1,"@");
+    /*$email1="gregorylacroix78@gmail.com";
+    echo strops($email1,"@");*/
 
-$email2="bonjour";
-echo strpos($email2,"@");
+$email2 = "bonjour";
+echo strpos($email2, "@");
 /*cette ligne ne sort rien pourtant il y a quelque chose dedans: FALSE!*/
-var_dump(strpos($email2,"@"))/* c'est une instruct° d'affichage amelioré qu'on utilise en developpement*/
+var_dump(strpos($email2, "@"));/* c'est une instruct° d'affichage amelioré qu'on utilise en developpement*/
 iconv_strlen($phrase).'<br>';
 $phrase ="mettez une phrase ici";
-echo iconv_strlen($phrase).'<br>';
+echo iconv_strlen($phrase) .'<br>';
 //iconv_strlen()est une fonct° predefini qui permet de calculer la taille d'une chaine decaractere
 //contexte on peut utiliser pour savoir si le pseudo et le mdp ont la tailloe conforme pour une inscription
-substr()
+//substr()
     $texte = "Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Quia pariatur est, quidem iure aliquid, itaque laboriosam 
     deserunt necessitatibus repudiandae corrupti laudantium quam consequatur?
-     Quasi, dolor non quae culpa consectetur quisquam."
+     Quasi, dolor non quae culpa consectetur quisquam.";
 
-echo substr($texte,0,20) . "<a
+echo substr($texte, 0, 20) . "...<a
 href=''>Lire la suite </a>";
 /*substr() est une fonct° predefinie qui permet le retour de la chaine argument
 /* 1-la chaine à couper 
@@ -304,18 +304,21 @@ function meteo($saison,$temperature)
 
 //---EXO-------------gérer le 's' de degres en fonction de la t°,pensez à gérer les articles 'en' ete ou 'au'     *printemps
 
-function exometeo($saison1,$saison2,$temperature)
+function exometeo($saison,$temperature)
 {
-if($temperature>1||$temperature<-1)
-$degre="degrés";
-else
-$degre="degré";
-if($saison=='printemps')
-$art='au';
-else
-$art='en';
+if($temperature>1||$temperature < -1)
+$degre = "degrés";
 
-    return "nous sommes en $saison et il fait $temperature $degre<br>";
+else
+$degre = "degré";
+
+if($saison == 'printemps')
+$art = 'au';
+
+else
+$art = 'en';
+
+    return "nous sommes en $art $saison et il fait $temperature $degre<br>";
 }
 echo exometeo('été',2);
 echo exometeo('autonme',-2);
@@ -345,10 +348,205 @@ function affichagePays()
     }
 echo affichagePays();
 
+echo '<hr><h2 class="display-4 text-center">structure itérative:boucle</h2><hr>';
+
+//boucle while
+$i=0;
+while($i<5)
+{
+    echo "$i---";
+    $i++;//ça equivaut à $i=$i+1,sinon la boucle n'est pas fermée et '0' à l'infini
+    }
+    echo '<hr>';
+    //EXO :faire en sorte de ne pas avoir les tirets à la fin:
+    //0---1---2---3---4
+$j=0;
+while($j < 5)
+{
+if($j !== 4)
+echo"$j---";
+else 
+echo $j;
+$j++;
+}
+//la boucle FOR
+for($j =0;$j< 16; $j++)//initialisation ,condition d'entrée/incrémentation
+{
+    echo "$j .<br>";
+}
+//------EXO------
+echo'<select>';
+for($i =0; $i<31;$i++)
+{
+    echo "<option>$i</option>";
+}
+
+echo'</select>';
+//-----EXO------
+//faites une boucle qui affiche de 0 à9 sur la même ligne(soit 10 tour)
+for($d=0; $d<10; $d++)
+{  
+    echo "t'as gagné";
+}
+
+//faites une boucle qui affiche de 0 à9 sur la même ligne ds un tableau HTML
+echo'<table class="table table-bordered text-center "><tr>';
+for($e=0 ;$e<10 ;$e++)
+{
+echo "<td>$e</td>";//on créer une option par tour de boucle avec la vazleur $e ds chaque cellule
+}
+echo'</tr></table>';
+//------------EXO---------------
+//faire pareil  de 0 à 99 sur plusieurs lignes ss faire de 10 boucles
+//là c'est une boucle imbriquée
+$compteur =0;
+echo'<table class="table table-bordered text-center "><tr>';
+//
+for($ligne=0 ;$ligne<10 ;$ligne++)
+{
+    echo'<tr>';
+
+for($cellule=0;$cellule<10; $cellule++)
+{
+  echo "<td>$compteur</td>"; 
+  $compteur++; //on démarre acec la 1 ére cellule avec la 2 ém condition ensuite on increment le compteur pr le suivant et ainsi de suite jusqu'à 9 on peut dire qu'un tour de ligne => 10 tour de cellule
+}
+echo'</tr>';
+}
+echo '</table>';
+
+echo '<hr><h2 class="display-4 text-center">tableau de données ARRAY</h2><hr>';
+//UN TABLEAU array erst declaré presque comme une variable améliorée car on ne conserve pas qu'une valeur ms un ensemble de valeur
+$liste =array('touhami',"auguste","djamila","lullia","nadia");
+//echo $liste;/!\erreur !! on ne peut pas afficher un tableau array avec echo
+//ou
+//print$liste;
+echo'<pre>';var_dump($liste);echo'</pre>';//on a un tableau Array associatif
+/*
+  |indice_____  |valeur|
+        |07   touhami     |
+                |
+<pre> est une balise qui permet de formater la sortie du pront_r ou var_dump*/
+//------EXO-------
+//tenter de sortir"djamila" en passant par le tableau de données Array sans faire 'echo djamila';
+
+echo $liste[2].'<br>';//on fait sortir l'indice 
+echo '<hr><h2 class="display-4 text-center">boucle foreach pour les tableaux des données Array</h2><hr>';
+
+$tab[]="france";//autre moyen d'affecte une valeur dans un tableau les crochets vides permettent de generer des indices numériques
+$tab[]="angleterre";
+$tab[]="espagne";
+$tab[]="italie";
+$tab[]="portugal";
+//echo$tab;/!\erreur!!!
+echo '<pre>';print_r($tab);echo'</pre>';
+//boucle foreach
+ //   -------   ----------------
+//   |indice  |  pays          |
+ //  -----------------------------
+ //   |    1   |  angleterre   |
+ //-----------------------------
+//    |   2    |     espagne   | 
+//-------------------------------
+ //   |   3    |   italie      |
+//-------------------------------
+//    |    4   | portugal      |
+//-------------------------------
+//    $value
+//qd il y a qu'1 variable $value parcourt la colonne du tableau de données
+//la boucle foreach est un moyen de passer en revu le tableau de données Array
+foreach($tab as $value)//as fait partie du langage et est obligatoire $value est une variable de reception
+//que ns nommons elle reception une valeur par tour de boucle
+echo"$value<br>";//on affiche successivement les elements du tableau 
+echo'<hr>';
+//--------------
+//foreach:indice+valeur
+foreach($tab as $key =>$value)
+{
+    echo"$key=>$value<br>";//la fleche est obligatoire
+}
+//qd il ya 2 variables la 1ere parcourt la colonne des indices($key) et l'autre celle des valeurs($value)
+
+?>
+<hr>
+<?php foreach($tab as $key =>$value):?>
+<?= $key;?> =><?=$value;?> <br>
+<?php endforeach; ?>
+<!--for():/endfor-->
+<!--if():/else:/endif-->
+<!--while():/endwhile-->
+
+
+<?php 
+$perso = array("m" =>"mario","l" =>"luigi","d" =>"djamila","n"=>"nassim");
+echo '<pre>';
+print_r($perso);
+echo'</pre>';
+
+echo"taille du tableau:".count($perso).'<br>';
+echo"taille du tableau:".sizeof($perso).'<br>';
+//sizeof retourne la taille d'un tableau Array combien il y a d'element à l'interieur .pas de difference entre les 2
+echo implode("/",$perso);//implode ()est une fonction predefinie qui rassemble les elements d'un tableau
+//en une chaine(separée par un symbol).l'inverse expolde
+echo '<hr><h2 class="display-4 text-center"> tableaux des données Array Multidimensionnel</h2><hr>';
+//ns parlons de tableau multidimensionnel qd un tableau est contenu ds un autre
+$tab_multi = array(
+    0=>array("nom"=>"Macron","salaire"=>1),
+    1=>array ("nom"=>"lacroix","salaire"=>15000)
+    );
+    echo'<pre>';print_r($tab_multi); echo '</pre>';
+    //-------------EXO--------------
+    //sortir macron en passant par le tableau multi représenté par $tab_multi sans faire unh 'echo macron' 
+
+echo $tab_multi[0]['nom'].'<hr>';
+//------------------EXO--------------------
+//afficher tout le tableau multidimensionnel à l'aide de boucle foreach 
+/*foreach($tab_multi[0] as $key=>$value)
+{
+ echo $tab_multi   ['nom']['salaire'];
+    foreach($tab_multi[1] as $keys=>$value)
+    {
+echo $tab_multi['nom']['salaire'];
+    }
+}*/
+foreach($tab_multi as $key=>$tab)
+{
+    echo '<div class ="col-md-3 offset-md-5 alert alert-success text-dark mx-auto text-center">';
+    foreach($tab as $key2 =>$value)
+{
+echo "$key2=>$value<br>";
+}
+echo'</div>';
+}
+echo'<hr>';
+//-----------------------------------------------------------------------------
+for($i =0; $i <count($tab_multi); $i++)
+{
+    echo '<div class="col-md-2 offset-md-6 alert alert-info text-dark mx-auto text-center">';
+    foreach($tab_multi[$i] as $key => $value)
+    {
+        echo "$key =>$value<br>";
+    }  
+       echo'</div>';
+}
+//on se sert d la variable $i de la boucle for pour aller crocheter à chaque indice du tableau multi et parcourrir les données
+
+
+
+
+
+
+
+
+
 
 
 
 ?>
 <div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 </body>
 </html>
