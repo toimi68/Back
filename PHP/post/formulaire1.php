@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
 
-<button class="btn btn-primary" type="submit">Button</button>
+<button class="btn btn-primary" type="submit">submit</button>
 
 
 
