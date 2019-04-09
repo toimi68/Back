@@ -531,11 +531,46 @@ for($i =0; $i <count($tab_multi); $i++)
 }
 //on se sert d la variable $i de la boucle for pour aller crocheter à chaque indice du tableau multi et parcourrir les données
 
+echo '<hr> <h2 class="display-4 text-center"> Superglobales</h2><hr>';
 
+        // les superglobales sont des variables de type ARRAY , elles sont accessibles de partout, c'est à dire à la foids dans l'espace global et local, elle permettent de véhiculer des données
 
+        /*
+            $_SERVER : véhicule les données lié au server
+            $_GET : véhicule les données transmit dans l'URL
+            $_POST : véhicule les données d'un formulaire
+            $_FILES : véhicule les données d'un fichier umploader
+            $_COOKIE : véhicule les données d'un fichier cookie
+            $_SESSION : véhicule les données d'une session en cours
 
+            elles s'appellent toujours avec le signe $ suivi d'un '_' et toujours en MAJUSCULE 
+        */
+        echo '<pre>'; print_r($_SERVER); echo '</pre>';
 
-
+//09.04.2019
+echo '<hr> <h2 class="display-4 text-center"> CLASSE ET OBJET</h2><hr>';
+//UN OBJET c'est 1 type de données,comme un array on regroupe les infos ms on y declare aussi les variables(attribut ou propriete)et des fonctions(methodes)
+class Etudiant
+{
+    public $prenom ='gregory';//public permet de preciser que l'element sera accessible partout
+    //il y a aussi protect et private
+    public $age = 26;
+    public function pays()
+        {
+            return 'France';
+        }    
+}
+$objet = new Etudiant;//'new' permet d'instancier la class etudiant et d'en faire un objet.$objet
+//est un exemplaire de la classe etudiant,c'est un enfant de la classe
+//pour exploiter les données déclarées ds la classe il faut créer une instance(objet de la classe)
+echo '<pre>';var_dump($objet) echo'</pre>';
+echo '<pre>';var_dump(get_class_method($objet)); echo'</pre>';//var_dump ns permet de voir qu'on a bien l'objet issu de la classe etudiant à l'identifiant 1 
+//et on observe les proprietes(variables)declarées ds la classe
+//on pioche avec un array avec les crochets'[]' on pioche ds objet avec une fleche'->'
+echo "je m'appel:".$objet->prenom .'<hr>';
+//en piochant ds objet on obtient la propriete $prenom déclarée ds la classe
+echo "mon age est:".$objet->age .'ans<hr>';
+echo "j'habite en:" .$objet->pays() .'<hr>';
 
 
 
