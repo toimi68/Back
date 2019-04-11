@@ -21,6 +21,8 @@
 //traitement....
 
 //connexion BDD:
+echo '<hr><h2 class="display-4 text-center ">01.PDO :connexion</h2><hr>';
+
 $pdo =new PDO ('mysql:host=localhost;dbname=entreprise','root','',
 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,PDO::MYSQL_ATTR_INIT_COMMAND =>'SET NAMES utf8'));
 echo '<pre>';var_dump($pdo);echo '</pre>';
@@ -62,6 +64,9 @@ echo '<pre>';print_r(get_class_methods($result));echo '</pre>';
 //$employe=$result->(PDO::fetch_NUM).ON AURA UN tableau indexe numetriquement
 //$employe=$result->(PDO::FETCH_BOTH)Là on aura un tableau avec tout
 $employe =$result-> fetch(PDO::FETCH_ASSOC);
+//requet de select° -> query()->retour objet PDO statement(inexploitable)
+//POur exploiter le resultat ->associe une methode -->fetch() ou fetchAll()(class PDOstatement)-->retourne tableau Array
+//si plusieurs resultat -->boucle!!
 echo '<pre>';print_r($employe);echo '</pre>';
 //EXO afficher les info à l'aide d'1 affichage conventionel  en excluant l'id_employes
 echo '<div class="col-md-4 offset-md-4 mx-auto alert alert-success text-center">';
@@ -97,7 +102,7 @@ echo $employes['salaire'].'<hr>';
 echo '</div>';
 
 }
-echo '<hr><h2 class="display-4 text-center"> 04.PDO :QUERY FETCHAL FETCH_ASSOC(plusieurs resultats)</h2><hr>';
+echo '<hr><h2 class="display-4 text-center"> 05.PDO :QUERY FETCHALL FETCH_ASSOC(plusieurs resultats)</h2><hr>';
 $resultat = $pdo->query("SELECT*FROM employes");
 $donnees = $resultat->fetchAll(PDO ::FETCH_ASSOC);//fetchAll retourne un tableau multidimensionel avec chaque tableau indexé numeriquement(de chaque employes)
 echo '<pre>';print_r($donnees);echo'</pre>';
@@ -117,8 +122,116 @@ foreach($donnees as $key => $tab)
         echo'</div>';
     }
 //$tab receptionne un tableau array d'un employé par tour de boucle [0] =>ARRAY
-echo '<hr><h2 class="display-4 text-center"> 04.PDO :QUERY FETCH BDD</h2><hr>';
+echo '<hr><h2 class="display-4 text-center"> 06.PDO :QUERY FETCH BDD</h2><hr>';
 //EXO affiche  la liste des bases de données puis les mettre ds une liste ul li
+$resultat =$pdo->query("SHOW DATABASES");
+echo'<pre>';print_r($resultat);echo'</pre>';
+echo '<ul class="list-group">';
+//$data receptionne un tableau Array  par tour de boucle contenant les info de la BDD
+while($data =$resultat->fetch(PDO::FETCH_ASSOC))
+{
+    //echo '<pre>';print_r($data);echo '</pre>';
+    echo '<li class="list-group-item">'.$data['Database'].'</li>';
+    //on va crocheter çà l'indice [database ]pour affichern le nom de la BDD
+}
+echo '</ul>';
+echo '<hr><h2 class="display-4 text-center"> 07.PDO :QUERY TABLE</h2><hr>';
+echo '<class="table table-bordered text-center"><tr>';
+//while($colonne = $resultat->getColumnMeta())----ne fonct° il faut un parametre pour get....
+//{    echo'<pre>';print_r($colonne);echo '</pre>';
+//}
+$resultat=$pdo->query("SELECT*FROM employes");
+//columnCount()est une methode issue de la classe PDOstatement qui retourne le nb de colonne selectionnées via la requete de selection 
+//ici on a integer 7,donc la boucle for tourne 7 fois comme il y a 7 colonnes 
+//getColumnMeta( )est une methode issue de la classe PDOstatementqui permet de recolter les info champs et colonne selectionnées
+
+
+echo '<table class="table table-bordered text-center"><tr>';
+for($i =0;$i<$resultat->columnCount();$i++)
+{
+    $colonne=$resultat-> getColumnMeta($i);
+    //
+    echo'<pre>';print_r($colonne);echo'</pre>';
+    echo"<th>$colonne[name]</th>";
+}
+echo'</tr>';
+while($employe=$resultat->fetch(PDO::FETCH_ASSOC))
+{
+    echo'<tr>';
+echo '<pre>';print_r($employe);echo '</pre>';
+    foreach($employe as $value)
+    {
+        echo "<td>$value</td>";
+    }
+}
+echo '</tr>';
+echo '</table><hr>';
+
+
+
+
+
+
+//----EXO -------
+//faire la même chose en utilisant la methode fetchAll
+echo '<table class="table table-bordered text-center"><tr>';
+$resultat = $pdo->query("SELECT*FROM employes");
+$employes = $resultat->fetchAll(PDO ::FETCH_ASSOC);//fetchAll retourne un tableau multidimensionel avec chaque tableau indexé numeriquement(de chaque employes)
+//echo '<pre>';print_r($employes[0]);echo'</pre>';
+echo '<table class="table table-bordered text-center"><tr>';
+foreach($employes as $key=>$value)
+//on va crocheter au 1 er indice du tableau multi pour recuperer les indices et les stocker ds les entêtes<th></th>
+{
+    echo"<th>$key</th>";    
+}
+echo '</tr>';
+ 
+foreach($employes as $tab)
+{
+    echo '<tr>';
+
+   foreach($tab as $infos)
+{
+ echo "<td>$infos</td>";
+}
+echo '</tr>';
+}
+echo '</table>';
+echo '<hr><h2 class="display-4 text-center"> 08.PDO :prepare+ bindvalue+ execute</h2><hr>';
+//les requetes preparees permettent de formuler une seule fois la requete et de l'executer autant qu'on veut
+//les rquetes preparées permettent de parer aux injection SQL
+//3cycles ds une requete;-analyse  -interpretation    -execution
+$resultat = $pdo->prepare("SELECT*FROM employes WHERE nom=:nom");//là preparat° pas d'execut°
+//:nom-->marqueur nominatif comme une boite ou un tampon
+echo'<pre>';print_r($resultat);echo'</pre>';
+$resultat->bindvalue(':nom','winter',PDO::PARAM_STR);
+//bindvalue() permet(methode PDOstatement)permet de lier une valeur au marqueur nominatif':nom'
+//argument bindvalue (nom du marqueur,valeur,ttype)
+//a ce stade pas d'execut°
+$resultat->execute();//methode PDOstatement permet d'executer la requete preparee
+echo'<pre>';print_r($resultat);echo'</pre>';
+//------EXO---------
+//afficher le resultat de la requete prepare à l'aide de methode et boucle
+//$resultat = $pdo->query("SELECT*FROM employes");
+$employe =$result-> fetch(PDO::FETCH_ASSOC);
+echo'<pre>';print_r($employes);echo'</pre>';
+echo '<div class="col-md-4 offset-md-4 mx-auto alert alert-success text-center">';
+foreach($employe as $key)
+{
+    echo "$key:$value<hr>";
+}
+echo '</div><hr>'
+
+$nom = 'Dubar';//la valeur du marqueur peut-être aussi une variable
+$resultat->bindValue(':nom',$nom,PDO::PARAM_STR);//on change la valeur du marqueur sans avoir à reformuler la requete SQL
+$resultat->execute();//on execute la requete
+$employe=$resultat->fetch(PDO::FETCH_ASSOC);
+echo'<pre>';print_r($employe);echo'</pre>';
+
+
+
+
+
 
 
 

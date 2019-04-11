@@ -23,6 +23,12 @@ if($_POST)
 echo '<div class="col-md-6 offset-md-3 alert alert-success text-center">
 L\'employe <strong>'.$_POST['nom'].'</strong>a bien enregistré!!</div>';
 }
+
+
+
+
+
+
 ?>
      <!-- //1/realiser un formulaire correspondant à la table 'employes'de la BDD 'entreprise'sauf id_employes
     // 2/controler en php que l'on controle bien tous les champs du formulaire
