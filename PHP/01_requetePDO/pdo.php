@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
  crossorigin="anonymous">
-    <title>Document</title>
+    <title>requete_pdo</title>
 </head>
 <body>
   <div class="container">
@@ -58,8 +58,8 @@ echo "nombre d'enregistrement affecté par l'UPDATE :
 echo '<hr><h2 class="display-4 text-center"> 03.PDO :select+fetch_assoc(1 seul resultat)</h2><hr>';
 
 $result = $pdo->query("SELECT*FROM employes WHERE id_employes=415");
-echo '<pre>';var_dump($resultat);echo'</pre>';
-echo '<pre>';print_r(get_class_methods($result));echo '</pre>';
+//echo '<pre>';var_dump($resultat);echo'</pre>';
+//echo '<pre>';print_r(get_class_methods($result));echo '</pre>';
 //on va avoir un tableau array indexe avec le nom des champs
 //$employe=$result->(PDO::fetch_NUM).ON AURA UN tableau indexe numetriquement
 //$employe=$result->(PDO::FETCH_BOTH)Là on aura un tableau avec tout
@@ -201,6 +201,20 @@ echo '<hr><h2 class="display-4 text-center"> 08.PDO :prepare+ bindvalue+ execute
 //les requetes preparees permettent de formuler une seule fois la requete et de l'executer autant qu'on veut
 //les rquetes preparées permettent de parer aux injection SQL
 //3cycles ds une requete;-analyse  -interpretation    -execution
+if($error)
+{
+    $_POST['mdp']=password_hash($_POST['mdp'],PASSWORD_DEFAULT);
+    $data_insert=$bdd->prepare(INSERT INTO membre(":pseudo,pseudo,mdp,civilite,email,:ville,:code_postale,:adresse)");
+    
+    
+    //
+}
+
+
+
+
+
+
 $resultat = $pdo->prepare("SELECT*FROM employes WHERE nom=:nom");//là preparat° pas d'execut°
 //:nom-->marqueur nominatif comme une boite ou un tampon
 echo'<pre>';print_r($resultat);echo'</pre>';

@@ -1,0 +1,24 @@
+body{
+
+    background-color: #a9f0d1;
+    width:100%;
+    height: 100%;
+}
+.container{
+  margin: 0 auto;
+  background-image:url("../img/bg.jpg");   
+}
+h2{
+ font-family: 'Srisakdi', cursive;
+   
+text-align: center;
+}
+h1{
+ font-family: 'Srisakdi', cursive; 
+}
+
+section{
+  height: 85%;
+  width: 95%;
+  margin: 0 auto;
+}
