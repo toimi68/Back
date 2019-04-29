@@ -4,60 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
     crossorigin="anonymous">
     <title>formulaire-1</title>
 </head>
 <?php
-
+echo '<pre>';print_r($_POST);echo'</pre>'
 ?>
 
 <body>
 
-<form>
+<form class="col-md-6 mx-auto"method ="post">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4"></label>
-      <input type="email" class="form-control" id="nom" placeholder="nom" name="nom">
+      <label for="inputEmail4">
+      <div class="alert alert-success" role="alert">
+      </label>
+      <input type="email" class="form-control" id="email" placeholder="email" name="email">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Prenom</label>
-      <input type="password" class="form-control" id="prenom" placeholder="Prenom" name="prenom">
+      <label for="lastname">Prenom <div class="alert alert-success" role="alert"></label>
+      <input type="text" class="form-control" id="prenom" placeholder="Prenom" name="prenom">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    <label for="inputAddress">Address<div class="alert alert-success" role="alert"></label>
+    <input type="text" class="form-control" id="address" placeholder="" name="adresse">
   </div>
   <div class="form-group">
-    <label for="inputAddress2">ville</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="ville">
+    <label for="inputAddress2">ville<div class="alert alert-success" role="alert"></label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="" name="ville">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputCity">genre</label>
-      <input type="text" class="form-control" id="genre" name="genre">
-    </div>
-    <textarea name="commentaire" id="commentaire" cols="30" rows="10"></textarea>
+      <label for="inputCity">genre<div class="alert alert-success" role="alert"></label>
+      <input type="text" class="form-control" id="genre" name="genre" placeholder="">
+    </div> 
     
   </div>
   
   </div>
-  <button type="submit" class="btn btn-primary">Valider</button>
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <button type="submit" class="btn btn-success">Valider</button>
+</form><br>
+<textarea name="commentaire" id="commentaire" cols="30" rows="5"></textarea>
 
 
 

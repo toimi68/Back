@@ -1,0 +1,73 @@
+/*   
+Theme Name: Porfolio
+Theme URI: http://localhost/Back/wordpresstz/wp-content/themes/portfolio2
+Description: portfolio2
+Author: Zarouel touhami
+Author URI: http://localhost/Back/wordpresstz
+Version: 1.0
+*/
+body{
+    background: #EBEAE8;
+    
+    
+}
+h2 a:hover{
+    text-decoration: none;
+    
+}
+.hauteur{
+    min-height:200px;
+}
+.h-entetes{
+    min-height:200px;
+}
+.ma-section{
+    min-height:600px;
+}
+#wysiwyg_widgets_widget-3 h1{
+    list-style: none !important;
+}
+.menu ul{
+    text-align: center;
+    display: flex;
+}
+.menu li{
+    margin-left: 2rem;
+}
+#media_image-8{
+  list-style: none !important;  
+}
+.mapp{
+ list-style: none !important;   
+}
+.poste{
+   list-style: none !important; 
+}
+.HD{
+  list-style: none !important;  
+}
+.mes-competences3{
+    font-size: 70px;
+}
+.bas-droite{
+background: gray;
+}
+.bas-gauche{
+    background: darkgray;
+}
+.bas-centre{
+    background: lightgray;
+}
+.haut-center {
+text-align: justify;
+}
+.navbar{
+    background-color: white;
+    font-size: 20px;
+    
+    
+}
+    .navbar a {
+color:white;
+text-decoration:none;
+    }

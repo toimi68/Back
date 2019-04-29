@@ -23,12 +23,6 @@ if($_POST)
 echo '<div class="col-md-6 offset-md-3 alert alert-success text-center">
 L\'employe <strong>'.$_POST['nom'].'</strong>a bien enregistré!!</div>';
 }
-
-
-
-
-
-
 ?>
      <!-- //1/realiser un formulaire correspondant à la table 'employes'de la BDD 'entreprise'sauf id_employes
     // 2/controler en php que l'on controle bien tous les champs du formulaire
@@ -63,7 +57,7 @@ L\'employe <strong>'.$_POST['nom'].'</strong>a bien enregistré!!</div>';
             <input type="date" class="form-control" id="date_embauche" name="date_embauche" placeholder="date d'embauche">
         </div>
         
-        <button type="submit" class="btn btn-dark">Submit</button>
+        <button type="submit" class="btn btn-dark">Valider</button>
     </form>
 </body>
 </html>

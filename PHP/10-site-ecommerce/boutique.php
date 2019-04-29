@@ -69,7 +69,7 @@ if(isset($_GET['categorie'])):
     $resultat = $bdd->prepare("SELECT*FROM produit WHERE categorie=:categorie");
     $resultat->bindValue(':categorie',$_GET['categorie'],PDO::PARAM_STR);
     $resultat->execute();
-else:$resultat=$bdd->prepare("select *FROM produit");
+else:$resultat=$bdd->prepare("SELECT *FROM produit");
 $resultatexecute();
 
 endif;
@@ -84,12 +84,12 @@ endif;
               <a href="fiche_produit.php?id_produit<?=$produits['id_produit']?>"><img class="card-img-top" src="<?= $produits['photo']?>" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="fiche_produit.php?id_produit<?=$produits['id_produit']?>VENEZ VOIR src=<?$produits['prix']?> alt=""></a>
+                  <a href="fiche_produit.php?id_produit<?=$produits['id_produit']?>VENEZ VOIR src=<?$produits['prix']?> alt="></a>
                 </h4>
                 <h5 class="text-center">
-                <p class="card-text"><a href="fiche_produit.php?id_produit<?=$produits['titre']?>src=<?$produits['titre']alt=""></p></h5>
+                <p class="card-text"><a href="fiche_produit.php?id_produit<?=$produits['titre']?>src=<?$produits['titre']?>alt="></p></h5>
                 <h5 class="text-center">
-                <p class="card-text"><a href="fiche_produit.php?id_produit<?=$produits['categorie']?>src=<?$produits['categorie']></p></h5>
+                <p class="card-text"><a href="fiche_produit.php?id_produit<?=$produits['categorie']?>src=<?$produits['categorie']?>alt="></p></h5>
                 <h5 class="text-center">
                 <p class="card-text"><a href="fiche_produit.php?id_produit<?=$produits['taille']?>"></p></h5>
                 <h5 class="text-center">

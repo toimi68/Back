@@ -77,7 +77,7 @@
    {
        //   echo '<pre>'; print_r($commentaire); echo '</pre>';
            echo '<div class="col-md-6 offset-md-3 alert alert-info text-center">';
-           echo "<div><em>Par $commentaire[pseudo], le $commentaire[datefr] à $commentaire[heurefr]</em></div><hr>";
+           echo "<div><em> Par $commentaire[pseudo], le $commentaire[datefr] à $commentaire[heurefr]</em></div><hr>";
            echo "<div class='text-justify'>$commentaire[message]</div>";
            echo '</div>';
    }
