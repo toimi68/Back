@@ -31,7 +31,7 @@
 
 
 <!--navbar---bootstrap----->
-<nav class="navbar navbar-expand-lg navbar-light bg-success text-center">
+<nav class="navbar navbar-expand-lg navbar-light bg-success ">
 <!--cettefonction wordpress permet d'importer le menu principal que l'on a creer ds le fichier php container class=>'menu header'
 theme_location =>'primary' permet de preciser que c'est le menu principal-->
   <div class="container">

@@ -11,7 +11,7 @@ if(!empty($_GET))
    $photo=$_GET[|'img'] ;
    $prix=$_GET['prix'];
 }
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

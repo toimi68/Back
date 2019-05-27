@@ -1,0 +1,8 @@
+<? xml version="1.0" ?>
+<config>
+<host>localhost</host>
+<user></user>
+<password></password>
+<db></db>
+<table></table>
+</config>
