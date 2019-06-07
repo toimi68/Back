@@ -7,7 +7,7 @@
 <label for="<?= $value['Field']?>"><?=$value['Field']?></label>
 <input type="text" class="form-control" id="<?= $value['Field']?>
 "name="<?=$value['Field']?>"
-placeborder="Enter"<?= $value['Field'] ?>>
+placeborder="Enter"<?= $value['Field'] ?> " value = " <? = ($op=='update') ? $values[$value['Field']]:''?>">
 </div>
 
 <?php endforeach;?>

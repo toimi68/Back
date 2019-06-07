@@ -49,6 +49,14 @@ class EntityRepository
         $r=$q->fetchAll(\PDO::FETCH_ASSOC);
         return array_splice($r,1);//permet de retirer le 1er champ idemploye ds le formulaire ds mon ...
     } 
+
+    public function select($id)
+    //$q = $this->getDb()->query("SELECT*FROM employe WHERE idEmploye = 7256);
+    $q =$this ->getDb()->query("SELECT*FROM " .$this->table .'WHERE id' .ucfirst ($this->table) . "=" .(int)$id);
+$r = $q->fetch(\PDO::FETCH_ASSOC).
+return $r;
+}
+
     public function save()
     {
         $id = isset($_GET['id']) ? $_GET['id'] : 'NULL';

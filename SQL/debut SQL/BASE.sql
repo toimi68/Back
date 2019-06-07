@@ -36,8 +36,8 @@ select nom,categorie from fruit
 "delete from nom_de_la_table where condition"
 --mettre à jour une colonne d'une table
 update fruit set calibre='7' where id_fruit='2';
-mettre à jour plusieurs colonnes d'une table
-UPDATE nom de la table(fruit) SET non de la colonne(calibre ='7') WHERE' condition(id_fruit='3');
+--mettre à jour plusieurs colonnes d'une table
+UPDATE nom de la table(fruit) SET non de la colonne(calibre ='7') WHERE condition(id_fruit='3');
 --ajouter une colonne à la table
 ALTER TABLE nom_de_la_table ADD nom_de_la_colonne;
 pour ajouter le lieu 
@@ -63,7 +63,7 @@ SELECT*FROM bonbon WHERE id_bonbon BETWEEN 2 and 6;
 SELECT *from bonbons WHERE id_bonbons NOT BETWEEN 3 AND 6.
 --------afficher un nombre limité de données--------
 SELECT*FROM stagiaires LIMIT 2;
-afficher un nombre limite de donnée en sautant des lignes
+--afficher un nombre limite de donnée en sautant des lignes
     SELECT*FROM STAGIAIRES limit 1,2.
     LE 1ER CHIFFRE REPRESENTE L OFFSET dc le nb  de ligne ignorées et le 2nd le nb de donnees à afficher
     CREATE  TABLE xxx(id INT(3)primary key auto_increment not null)

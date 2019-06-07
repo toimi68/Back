@@ -1,4 +1,4 @@
- Exercice: Créé une base de données magasin
+ Exercice: Créer une base de donnée magasin
 -- Créé une table produit qui contient les colonnes suivantes:
 -- id -> INT PRIMARY KEY AUTO_INCREMENT NOT NULL
 create table voitures(id-car INT(3) primary key auto_increment not null,marque varchar,(50)model varchar(60),couleur varchar(30)prix(float),date de vente date)

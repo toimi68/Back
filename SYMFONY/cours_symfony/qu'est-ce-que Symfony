@@ -1,0 +1,47 @@
+1/quel interet d'utiliser un framework
+
+a: organisation optimisée
+b:fonctionnalités communes à tous les projets
+c: services disponibles (routing,securite,BDD,moteur de template,formulaire)
+d: communaute
+
+2/choix du framework
+
+a:propre framework(pedagogie)
+b:les framework fullstack(symfony,zend,laravel,cake)
+c:les mini frameworks(silex,slim,codeigniter,lumen...)
+
+3/Symfony
+->framework français créer par sensiolabs
+->version :
+LTS :v2.8
+    v3.4:2.8 plus souple
+    v4.4 : 3.4 BundleLess Flex,Encore(webpack),maker,PHP 7.1
+
+    --------------------------------------
+    ETAPE 1 Installation de SF 3.4
+    sommaire :
+    1/installer Composer
+    2/Installer SF 3.4
+    3/Arborescence des dossiers et fichiers
+-app/ :contiçent toutes les configurations de l'app(BDD,securite,route,...); -bin/ : les executable de l'app(de SF); -src /le dossier ds lequel ns allons coder ;
+ -var/ les fichiers ecrit par SF au fur et à mesure (cache,log) ; -tests/ :test unitaires; -web:repertoire web(app.php ouapp_dev.php,img) equivaut à l'index php; -vendor/:le coeur de SF (les fichiers codés par les sensiolabs); -composer.json :contient la liste de toutes les dependances dont on a besoin.
+
+
+
+
+
+
+
+    4/Lancement de l'settings_applications
+
+    ----------------------------------------
+
+    1/Installer Composer 
+    Composer est un outil de dépendance.Il permet de telecharger  et de mettren à jour tous les outils(-service,composant,dependance)dont on a besoin
+    telecharger :https://getcomposer.org/download/composer-Setup.exe
+    2/installer SF3.4
+    Dans le dossier symfony
+    -maj+cliq-droit :ouvrir fenetre powershell
+    cmd composer create project symfony/framework-standart-edition test
+    installation fini on devrait avoir un dossier test

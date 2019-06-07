@@ -73,10 +73,10 @@ class Etudiant
     }
     //-----------------------getInfo
     public function getInfos(){
-        $info['prenom']=$this->getprenom();
-        $info['prenom']=$this->getnom();
-        $info['prenom']=$this->getemail();
-        $info['prenom']=$this->gettelephone();
+        $info['prenom']=$this->getPrenom();
+        $info['prenom']=$this->getNom();
+        $info['prenom']=$this->getEmail();
+        $info['prenom']=$this->getTelephone();
         return $info;
     
     }
