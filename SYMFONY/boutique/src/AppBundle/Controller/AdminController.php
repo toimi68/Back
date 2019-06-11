@@ -10,7 +10,7 @@ use AppBundle\Entity\Produit;
 use AppBundle\Entity\Membre; 
 use AppBundle\Entity\Commande; 
 use AppBundle\Entity\DetailsCommande; 
-
+use AppBundle\Form\ProduitType;
 
 
 class AdminController extends Controller
@@ -42,14 +42,16 @@ class AdminController extends Controller
 
 	/**
 	* @Route("/admin/produit/add/", name="admin_produit_add")
+	
+
 	* 
 	*/
-	public function adminProduitAddAction(){
+	public function adminProduitAddAction(Request $request){
 		
 		$produit = new Produit; 
 		// On créé un objet produit de l'entité produit (vide)
 		
-		$produit -> setReference('XXX');
+		/*$produit -> setReference('XXX');
 		$produit -> setCategorie('pull');
 		$produit -> setPublic('m');
 		$produit -> setPrix('25.99');
@@ -58,60 +60,68 @@ class AdminController extends Controller
 		$produit -> setPhoto('mariniere.jpg');
 		$produit -> setDescription('Super pull façon bretonne');
 		$produit -> setTaille('L');
-		$produit -> setCouleur('blanc et bleu');
-		
-		$em = $this -> getDoctrine() -> getManager(); // On récup le manager
-		$em -> persist($produit); // On enregistre dans le systeme l'objet
+		$produit -> setCouleur('blanc et bleu');*/
 
-		$em -> flush();
+		$form = $this -> createForm(ProduitType::class,$produit);
+		//on parle d'aller hydrater l'objet(on rempli l'objet avec les infos),on créer un formulaire du type produit on le lis à notre objet
+		$form -> handleRequest($request);
+		//lier definitivement l'objet '$produit'au formulaire,elle permet de traiter les info en POST
+		if($form->isSubmitted() && $form ->isValid()){
+			$em =$this ->getDoctrine ()->getManager();//on recupere le manager
+			$em -> persist($produit);//on enregistre ds le sys objet
+			$em ->flush();//on execute l'enregistrement avec le flush
+			$request ->getSession()->getFlashBag()->add('success','le produit');
+			return $this->redirectToRoute('admin_produit');
+		}
 		
 		
-		$params = array();
+		$params = array(
+			'produitForm'=> $form -> createView(),
+			'title' => 'Ajouter un Produit'
+		);
+		//createView()permet de generer la partie visuelle (HTML)du formulaire
+
 		return $this -> render('@App/Admin/form_produit.html.twig', $params);
 	}
 	//localhost:8000/admin/produit/add
-	//localhost:8000
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//localhost:8000	
 	
 	/**
 	* @Route("/admin/produit/update/{id}/", name="admin_produit_update")
 	*
 	*/
-	public function adminProduitUpdateAction($id){
+	public function adminProduitUpdateAction($id,Request $request){
 		
 		$em = $this -> getDoctrine() -> getManager();
 		
 		// Je récupère le produit à modifier : 
 		$produit = $em -> find(Produit::class, $id);
+		$form = $this ->createForm(ProduitType::class, $produit);
+		//on hydrate le formulaire
+		$form -> handleRequest($request);
+		if($form -> isSubmitted() && $form ->isValid()){
+
 		
 		// je le modifie 
-		$produit -> setPrix('1000');
+		//$produit -> setPrix('1000');
 		
 		// Je l'enregistre : 
 		$em -> persist($produit);
 		$em -> flush();
-		
+
+		$request -> getSession()->getFlashBag()->add('success','le produit'.$produit ->getTitre() . 'a bien été modifié!');
+		return $this -> redirectToRoute('admin_produit');
+		}
 		$params = array(
-			'id' => $id
+			'id' => $id,
+			'produitForm' => $form->createView(),
+			'title'=>'Modifier produit' .$produit->getTitre()
+
+
 		);
 		return $this -> render('@App/Admin/form_produit.html.twig', $params);
 	}
 	//localhost:8000/admin/produit/update/11
-	
-	
-	
-	
-	
-
 	/** 
 	* @Route("/admin/produit/delete/{id}/", name="admin_produit_delete")
 	*
@@ -132,18 +142,8 @@ class AdminController extends Controller
 	}
 	// test : localhost:8000/admin/produit/delete/12
 
-
-
-
-
-
-
-
-
-
 	
 	// CRUD MEMBRE
-
 	/**
 	* @Route("/admin/membre/", name="admin_membre")
 	* www.maboutique.com/admin/membre/
@@ -230,9 +230,4 @@ class AdminController extends Controller
 		return $this -> redirectToRoute('admin_commande');
 	}
 	// test : localhost:8000/admin/commande/delete/12
-
-
-
-
-
 }

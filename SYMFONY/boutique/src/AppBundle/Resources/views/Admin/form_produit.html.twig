@@ -1,1 +1,25 @@
-Je suis dans le formulaire produit
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+<h1>{{title}}</h1>
+{{form(produitForm)}}
+
+{#{{form_start(produitForm)}}
+<div class ="row mb-5>
+div class="form-group"}
+
+{{form_widget(produitForm.Enregistrer)}}
+{{form_end(produitForm)}}
+<div>
+</div>
+</div>
+pour changer des values ,les effets on fait{'attr':{
+    'class' :'btn-warning',
+    'data-id' : 'produitSubmit',
+}})}}S
+
+il manque des explications mais en fait il faut comprendre que c'esdt une metyhode de classement 
+#}
+
+{% endblock %}
