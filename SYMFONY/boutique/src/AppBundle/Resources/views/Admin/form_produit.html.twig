@@ -3,6 +3,9 @@
 
 {% block content %}
 <h1>{{title}}</h1>
+{{% if photo is defined %}}
+<img src="{{asset('photo/' ~photo)}}"height="150"/>
+
 {{form(produitForm)}}
 
 {#{{form_start(produitForm)}}

@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Produit
  *
@@ -75,7 +75,9 @@ class Produit
      *
      * @ORM\Column(name="photo", type="string", length=250, nullable=false)
      */
-    private $photo;
+    private $photo;//si on met "= " et un truc alors on créer l'image par defaut
+
+    private $file;//on ne mapp pas cette propriete elle n'est pas lié à la BDD ,elle ns permet de manipuler la photo d'un produit avt de l'enregistrer
 
     /**
      * @var integer
@@ -342,4 +344,70 @@ class Produit
     {
         return $this->stock;
     }
+
+
+
+
+
+    /**
+     * Set file
+     *
+     * @param object UploadedFile
+     *
+     * @return Produit
+     */
+    public function setFile(UploadedFile $file = NULL)
+    {
+        $this->file= $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return object UploadedFile
+     */
+    public function getFile()
+    {
+        
+        return $this->file;
+    }
+
+
+
+public function uploadPhoto(){
+        if($this ->file){
+            return;
+        }
+    $name = $this ->renameFile($this ->file ->getClientOriginalName());
+    //$name = renamefile('avatar.jpg')on enregistre en BDD le nouveau nom de la photo
+$this->photo=$name ;
+//enfin on deplacze la photo ds son dossier definitif
+$this->file->move($this,photoDir(),$name);
+    
+}
+    //s'il n'y a pas de fichier chargés ds l'objet alors on sort de la f°, d'ou return vide
+
+    
+
+    //recupere le nom de la photo pour le renommer
+    public function renameFile($nom){
+        //avatar.jpg
+        //file_150000045_200_avatar.jpg
+return 'file_' .time( ).'_'.rand(1, 9999) . $nom;
+
+    }
+        
+    public function photoDir(){
+        return __DIR__ . '/../../../web/photo';
+    }
+    public function removePhoto(){
+        if(file_exist($this ->photoDir().'/' . $this ->photo)){
+            unlink($this->photoDir() .'/' .$this -> photo);
+        }
+        //si le fichioer existe alors on le supprime
+    }
+
+
 }

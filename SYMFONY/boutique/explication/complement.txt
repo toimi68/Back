@@ -14,6 +14,8 @@ Etape 11 => Securité et utilisateurs
 Etape 12 => Association Mapping
 Etape 13 => Installation et boutique sur SF 4.3
 Bonus => formulaire de contact
+bonus =>panier
+bonus=>mis en prod
 
 Intro:
 **************************************************
@@ -400,9 +402,9 @@ href="{{ path('produit', { 'id': pdt.id }) }}"
           - categorie => nom de la route
           - cat => parametre dynamique de la route
           - cat.categorie => valeur du parametre dynamique
-
+---------------------------------------
  ETAPE 7 Entités
-
+---------------------------------------------
  Sommaire:
  - Doctrine ORM et le concept des entités (Entity)
  - Créer Entité Produit
@@ -509,9 +511,9 @@ Par contre elle ne génère ni les repository ni les getters et setters
 php bin/console doctrine:generate:entities AppBundle
 
 => cela nosu crée nos getters et setters et genere les repositories
-
+-------------------------------------------------
 Etape 8
-
+-------------------------------------------------------
 Sommaire:
 - le service doctrine
 - acceder au service doctrine depuis les controllers
@@ -664,8 +666,9 @@ Query Builder:
 Create Query : 
 https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/dql-doctrine-query-language.html
 
-
+----------------------------------------------------
 Etape 9; les formulaires
+--------------------------------------------------------
 sommaire:
 - le fonctionnement des formulaires
 - générer les formulaires
@@ -703,3 +706,53 @@ A faire : Inscription (page/inscription)
 7/Route : recuperer lesx infos du formulaire et enregistrer le membre
 
 /!\ Etant donné que le champs "statut" existe ds notre BDD le formulaire va être créer avec un champ statut ,hors ce n'est pas au membre de choisir son statut:p
+---------------------------------
+6/validation des donnees 
+
+le formulaire est genere par SF de maniére basique,pour la securite et les contraintes ça passe par le fichier produitType.php
+et on utilise contraintes pour les definir
+->cf produitType.php
+---------------------------------------
+7/Champs file
+
+-Gestion des photos:
+a-enregistrer le nom de la photo ds la BDD
+b-Enregistrer la photo ds le server
+
+==>CF f° uploadFile() ds Entity Produit.
+/!\ ds notre formulaire il n'est plus necessaoire d'avoir le champ photo(TEXT) ms un champ (FILE) qui reecupére les infos de la photo uploadée 
+pour aller plus loin avec les formulaires et SF
+https://symfony.com/doc/current/forms/types.html
+--------------------------------------
+ETAPE 10 :validation des données
+-------------------------------------------
+pour aller plus loin avec les formulaires et SF
+https://symfony.com/doc/current/validation.htm
+----------------------------------------------
+ETAPE 11:Association MAPPING
+---------------------------------------------------
+
+ETAPE :12 SECURITE DES utilisateurs-------------
+-----------------------------------------------
+
+a- niveau de securité
+
+SF considere tt le user  comme anonyme
+aprés il y na des niveaux pour chaque type d'user: *Role _USER
+                                                   *Role_admin
+                                                   *Role_Super_Admin
+SF a un systeme de pare-feu 
+-on defini les routes que les roles peuvent emprunter.
+-->si un user anonyme -->homepage = ok
+-->si un user anonyme -->profil = pas ok-->connexion-->profil
+-->si user connecté-->profil=ok
+-->si un user connecté --> admin/produit=pas ok-->page erreur(404)
+en fonction du visiteur et de la ressource demande on peut paramétrer un reaction
+
+
+
+
+b-fichier de securité
+c-creation des routes
+d-classe membre (exte,nds UserInterface)
+e-Layout

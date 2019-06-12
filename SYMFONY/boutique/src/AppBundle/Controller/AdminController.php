@@ -68,9 +68,12 @@ class AdminController extends Controller
 		//lier definitivement l'objet '$produit'au formulaire,elle permet de traiter les info en POST
 		if($form->isSubmitted() && $form ->isValid()){
 			$em =$this ->getDoctrine ()->getManager();//on recupere le manager
-			$em -> persist($produit);//on enregistre ds le sys objet
+			$em -> persist($produit);
+			$produit->uploadPhoto();
+			//on enregistre ds le sys objet
 			$em ->flush();//on execute l'enregistrement avec le flush
-			$request ->getSession()->getFlashBag()->add('success','le produit');
+			$request ->getSession()->getFlashBag()->add('success','le produit',$produit->getId());
+			
 			return $this->redirectToRoute('admin_produit');
 		}
 		
@@ -107,6 +110,7 @@ class AdminController extends Controller
 		
 		// Je l'enregistre : 
 		$em -> persist($produit);
+		$produit -> uploadPhoto();
 		$em -> flush();
 
 		$request -> getSession()->getFlashBag()->add('success','le produit'.$produit ->getTitre() . 'a bien été modifié!');
@@ -115,7 +119,8 @@ class AdminController extends Controller
 		$params = array(
 			'id' => $id,
 			'produitForm' => $form->createView(),
-			'title'=>'Modifier produit' .$produit->getTitre()
+			'title'=>'Modifier produit' .$produit->getTitre(),
+			'photo'=>$produit-> getPhoto()
 
 
 		);
@@ -133,7 +138,8 @@ class AdminController extends Controller
 		// Récupère l'objet produit
 		$produit = $em -> find(Produit::class, $id);
 		
-		// je supprime le produit : 
+		// je supprime le produit :
+		$produit->removePhoto(); 
 		$em -> remove($produit);
 		$em -> flush(); 
 		
