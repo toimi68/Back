@@ -753,6 +753,18 @@ en fonction du visiteur et de la ressource demande on peut paramétrer un reacti
 
 
 b-fichier de securité
+<code>app/config/securité.yml
 c-creation des routes
+form_loggin:
+login_path
+
 d-classe membre (exte,nds UserInterface)
+-->username
+-->password 
+-->
 e-Layout
+ds les vues on fait la difference du niveau d'acces avec :
+{{if is granted('IS_AUTHENTICATED_FULLY') }} :tt le monde (sauf anonyme)
+{{if is _granted('ROLE_ADMIN') }} : ts les admin
+
+===>le salage(cf salt.php) c'est l'idée de rendre un MDP quasiment inviolable en ajoutant au MDP soit une chaine de caractetre que seul l'admin connait

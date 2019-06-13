@@ -155,8 +155,15 @@ class AdminController extends Controller
 	* www.maboutique.com/admin/membre/
 	*/
 	public function adminMembreAction(){
-		
-		$params = array();
+		$repo =$this -> getDoctrine()->getRepository(Membre::class);
+		$membre =$repo->findAll();
+
+
+
+		$params = array('membre' => $membres);
+	
+			
+
 		return $this -> render('@App/Admin/list_membre.html.twig', $params);
 	}
 
@@ -200,8 +207,10 @@ class AdminController extends Controller
 	* www.maboutique.com/admin/commande/
 	*/
 	public function adminCommandeAction(){
+		$repo = $this -> getDoctrine()->getRepository(Commande::class);
+		$commandes = $repo -> findAll();
+		$params = array('commandes'=>$commandes);
 		
-		$params = array();
 		return $this -> render('@App/Admin/list_commande.html.twig', $params);
 	}
 
@@ -236,4 +245,4 @@ class AdminController extends Controller
 		return $this -> redirectToRoute('admin_commande');
 	}
 	// test : localhost:8000/admin/commande/delete/12
-}
+}//-------------------------------COMMANDE---------------------------------/

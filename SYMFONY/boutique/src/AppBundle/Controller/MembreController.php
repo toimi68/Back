@@ -36,14 +36,15 @@ class MembreController extends Controller
 
             $request -> getSession() -> getFlashBag() -> add('success', 'Félicitations vous êtes enregistré. Connectez-vous !');
 
-            return $this ->redirectToRoute('inscription');
+            return $this ->redirectToRoute('admin_membre');
      // localhost:8000/inscription
          }
 
 
 
         $params = array(
-             'MembreForm' =>$form ->createView()
+            'id'=>$id
+             'membreForm' =>$form ->createView()
         );
         return $this -> render('@App/Membre/inscription.html.twig', $params);
     }

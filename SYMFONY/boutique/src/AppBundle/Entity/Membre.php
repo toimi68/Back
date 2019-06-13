@@ -3,15 +3,44 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use 
 /**
  * Membre
  *
  * @ORM\Table(name="membre")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MembreRepository")
  */
-class Membre
+class Membre implements UserInterface
 {
+    /** 
+     * un membre peut avoir 0 ou plusieurs commande
+     * une commande a un seul membre
+     * @ORM\OneToMany(targetEntity="Commande","mappedBy="membreId")
+     */
+    private $commandes;//Array,avec ttes les commandes 
+    public function __construct(){
+        $this->commande=newArrayCollectiopn();
+
+    }
+    public function set(ArrayCollection $commandes){
+        $this->commandes = $commandes;
+        return $this;
+
+    }
+    public function getCommandes(){
+        return $this -> commandes;
+    }
+    /*@ORM\ManyToOne(targetEntity="Membre",inverseBy="commandes")
+    @ORM\JoinColumn(name="id",referencedColumnName="membre_id")*/
+private $membreId;//objet Membre
+
+}
+
+
+
+
     /**
      * @var integer
      *
@@ -91,7 +120,18 @@ class Membre
      */
     private $codepostal;
 
+/**  Set membreId
+     *
+     * @param integer $membreId
+     *
+     * @return Commande
+     */
+    public function setMembreId($membreId)
+    {
+        $this->membreId = $membreId;
 
+        return $this;
+    }
 
     /**
      * Get id
