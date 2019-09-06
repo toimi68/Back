@@ -13,8 +13,7 @@ $liste1=array();
 $liste2=array('mario','yoshi','toad','bowser');
 //---------------------------------
 try{
-    echo"position de <strong>'mario'</strong>dans le tableau ARRAY:<strong>".recherche($liste2,'mario') .'</strong><hr>';
-    
+    echo"position de <strong>'mario'</strong>dans le tableau ARRAY:<strong>".recherche($liste2,'mario') .'</strong><hr>';    
     echo "position de <strong>'toad'</strong>dans le tableau ARRAY:<strong>".recherche($liste2,'toad') .'</strong><hr>';
     echo "position de <strong>'bowser'</strong>dans le tableau ARRAY:<strong>".recherche($liste1,'bowser') .'</strong><hr>';
 }
@@ -23,12 +22,12 @@ catch(Exception $e)//le bloc de capture on tombe ds le bloc catch  si un traitem
 {
     echo '<pre>';print_r($e);echo'</pre>';
     echo '<pre>';print_r(get_class_methods($e));echo'</pre>';
-    }
+ }   
     //$e est un objet issu de la class exception il contient ces propres methodes comme getMessage  qui permet d'afficher le message d'erreur 
     // ms aussi getFile qui permet d'afficher lze fichier ds lequel a ete commis l'erreur
 //EXO  afficher UNE PHRASE COMPORTANT LE MESSAGE D ERREUR  LE FICHIER DS LEQUEL ET La  LIGNE
-echo "Message d'erreur :<strong>".$e->getMessage() ."</strong>a la ligne <strong>".$e->getLine()."</strong> ds le fichier: 
-<strong>"$e->getFile()."</strong>a la ligne <strong>".$e->getLine()"</strong>"'<br>';
+echo "Message d'erreur:<strong>".$e->getMessage() ."</strong>a la ligne <strong>".$e->getLine()."</strong> ds le fichier: 
+<strong> "$e->getFile()." </strong>a la ligne <strong> ".$e->getLine()"</strong>" '<br>';
 //il est possible de mettre plusieurs blocs try/catch à la suite  ça fonctionne ensemble 
 echo'<hr>''</hr>';
 //-----------conexion BDD

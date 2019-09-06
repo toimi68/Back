@@ -37,7 +37,7 @@ if(empty($_POST['prenom']))
     $error.='<div class="col-md4 offset-md-4 alert alert-danger text-center text-dark">il faut remplir le champ prenom!!</div>';
 
 }
-if(iconv_strlen($_POST['prenom'])<2 ||iconv_strlen($_POST['prenom']>20)
+if(iconv_strlen($_POST['prenom'])<2 ||iconv_strlen($_POST['prenom']>20))
 {
 
     $error.='<div class="col-md4 offset-md-4 alert alert-danger text-center text-dark">le prenom doit contenir entre 2 et 20caracteres !!</div>';
@@ -79,7 +79,7 @@ if(empty($error))
 {
     echo'<div class="col-md4 offset-md-4 alert alert-danger text-center text-dark">instruction non valide!!</div>';
 }
-}
+
 ?>
 
 
@@ -103,7 +103,7 @@ if($_POST){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>exercice2</title>
 </head>
 <body>
     

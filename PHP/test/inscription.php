@@ -1,13 +1,13 @@
 <?php 
-require_once('include/init.php');
+require_once('include/init.inc.php');
+require_once('include/header.inc.php');
+extract($_POST); /* $_POST['pseudo'] --> $pseudo
 
-extract($_POST); // $_POST['pseudo'] --> $pseudo
-
-// echo '<pre>'; print_r($_POST); echo '</pre>';
+ echo '<pre>'; print_r($_POST); echo '</pre>';
 
 
 
-// EXO 3
+ EXO 3*/
 if($_POST)
 {
     $verif_pseudo = $bdd->prepare("SELECT * FROM membre WHERE pseudo = :pseudo");
@@ -107,16 +107,8 @@ require_once('include/header.php');
     </div>
 </form>
 
-
-
-
-
-
-
-
-
-
-
 <?php 
 require_once('include/footer.php');
 ?>
+</body>
+</html>

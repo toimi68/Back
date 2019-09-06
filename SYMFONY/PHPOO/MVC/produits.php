@@ -54,7 +54,7 @@
        
 
         </ul>
-        <form class="form-inline my-2 my-md-0">
+        <form class="form-inline my-6 my-md-0">
         <input class="form-control" type="text" placeholder="Search">
         </form>
     </div>
@@ -63,7 +63,7 @@
     <section class="container mon-conteneur">
 <div class="row form1">
     
-    <div class="col-lg-3">
+    <div class="col-lg-6">
 
     <h1 class="my-4">Bienvenue dans la boutique !!!</h1>
     <div class="list-group">

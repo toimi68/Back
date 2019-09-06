@@ -16,7 +16,8 @@ class produitController
         $resultat =$this->pdo->query('SELECT* FROM produit');
         $produits=$resultat->fetchAll();
         return $categories;
-       }
+    }
+}
 
     $produit =$this->model->findAll();
     echo'<pre>';print_r($produits);echo'</pre>';

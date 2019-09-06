@@ -15,14 +15,14 @@ extract($_GET);
 <?php
 //requete de select° des categories distinctes de BDD
 
-$resultat =$bdd->query("SELECT DISTINCT categorie FROM produit");
+$resultat = $bdd->query("SELECT DISTINCT categorie FROM produit");
 //echo '<pre>';print_r($resultat);echo '</pre>';
 
 //bOUCLER SUR CHAQUE CATEGORIE et créer un lien
-    while($categorie =$resultat->fetch(PDO::FETCH_ASSOC)):
+    while($categorie = $resultat->fetch(PDO::FETCH_ASSOC)):
     //echo'<pre>';print_r($categorie);echo'</pre>';
     ?>
-          <a href="?categorie=<?=$categorie['categorie'] ?>" class="list-group-item alert-link text-dark text-center"><?=$categorie['categorie'] ?></a>
+          <a href="?categorie=<?=$categorie['categorie']?>" class="list-group-item alert-link text-dark text-center"><?=$categorie['categorie'] ?></a>
     
     <?php endwhile;?>
           
@@ -69,8 +69,8 @@ if(isset($_GET['categorie'])):
     $resultat = $bdd->prepare("SELECT*FROM produit WHERE categorie=:categorie");
     $resultat->bindValue(':categorie',$_GET['categorie'],PDO::PARAM_STR);
     $resultat->execute();
-else:$resultat=$bdd->prepare("SELECT *FROM produit");
-$resultat=>execute();
+else:$resultat = $bdd -> prepare("SELECT*FROM produit");
+$resultat -> execute();
 
 endif;
 
@@ -108,14 +108,15 @@ endif;
           </div>
     <?php 
   endwhile;
-  ?>
+  
 
-        <?php 
-      else: 
-      ?> 
         
-    <?php 
-  endif; 
+      // else; 
+      
+        
+    
+
+  // endif; 
   ?>
         </div>
         <!-- /.row -->

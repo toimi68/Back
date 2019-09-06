@@ -34,7 +34,7 @@ try
     }
 }
 $e = new EntityRepository;
-$e->getDB();
+$e->getDB);
 
 
 
@@ -47,14 +47,14 @@ return array_splice($r,1)//permet de retirer le champs 1er employe ds le formula
 }
 public function select($id)//permet de selectioner les donnees d'un employé ds la BDD via son id
 {
-    $q=$this->getDB()->querry("SELECT*FROM" .this->table .'WHERE id' .ucfirst($this->table).',',implode(',',array_key($_POST)).')VALUES' (
+    $q=$this->getDb()->querry("SELECT*FROM" .this->table .'WHERE id' .ucfirst($this->table).',',implode(',',array_key($_POST)).')VALUES' (
 }
 
 
 
 
 
-$q =$this->getDb()->query('REPLACE INTO' .$this->table .'(id' .ucfirst($this->table) .',' .implode(',',array_key($_POST)).')VALUES (' .$id . '.'.",".')');
+$q =$this->getDB()->query('REPLACE INTO' .$this->table .'(id' .ucfirst($this->table) .',' .implode(',',array_key($_POST)).')VALUES (' .$id . '.'.",".')');
 }
 public function delete($id)
 {

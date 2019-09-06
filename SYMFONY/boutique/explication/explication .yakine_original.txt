@@ -876,11 +876,7 @@ Sommaire :
 	- Access control : qui a le droit à quoi
 
 
-	/!\ Attention le YAML est très sensible aux indentations et aux espaces. 
-	
-
-
-
+	/!\ Attention le YAML est très sensible aux indentations et aux espaces.
 
 
 3/ Creation des routes

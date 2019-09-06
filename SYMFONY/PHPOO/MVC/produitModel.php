@@ -20,7 +20,7 @@ public function findAll()
 //Récupérer un produit par l'id
    public function find($id){
             $resultat = $this -> pdo -> query("SELECT * FROM produit WHERE id_produit = :id");
-            $resultat = bindValue('id' $id, PDO::PARAM_INT);
+            $resultat = bindValue('id', $id, PDO::PARAM_INT);
             $resultat -> execute();
             $produit = $resultat -> fetch();
             return $produit;

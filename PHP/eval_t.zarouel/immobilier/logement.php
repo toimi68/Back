@@ -91,10 +91,11 @@
 </form>
 <!--On se connecte--->
 <?php
+//--on dispose les condition des  critéres du code postal
 $bdd =new PDO ('mysql:host=localhost;dbname=immobilier','root','',
 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,PDO::MYSQL_ATTR_INIT_COMMAND =>'SET NAMES utf8'));
 ?>
-<!--on dispose les condition des  critéres du code postal-->
+
 <?php
 extract($_POST);
 if(is_numeric($_POST['code_postal']))
@@ -106,12 +107,12 @@ else{
 }
 
 ?>
-<!---creation de la page d'affichage-->
+<!--creation de la page d'affichage-->
 <?php
 
 if(isset($_GET['action'])&& $_GET['action']=='ajout')
 {
-    $data_insert = $bdd->prepare("INSERT INTO logement(id_logement,adresse,titre,description,ville,surface,code_postal,photo,prix,type) VALUES (:id_logement,,:adresse,:titre,:description,:ville,:surface,:code_postal,:photo,:prix,:type )");
+    $data_insert = $bdd->prepare("INSERT INTO logement(titre,adresse,ville,code_postal,surface,prix,photo,type,description) VALUES (:titre,:adresse,:ville,:code_postal,:surface,:prix,:photo,:type,:description, )");
 
     $_GET['action']='affichage';
   
@@ -133,25 +134,27 @@ else
 extract($_GET);
         foreach($_POST as $key => $value)
         {
-        if($key ='logement_38.jpg')//on ejecte le truc hiden de la photo
+        if($key ='logement_38.jpg')
+
+        //on ejecte le truc hiden de la photo
             {
                  $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);
             } 
             }
         $data_insert->bindvalue(":picture",$photo_bdd,PDO::PARAM_STR);
         $data_insert->execute();
-  $bdd =new PDO ('mysql:host=localhost;dbname=immobilier','root','',
+  $bdd = new PDO ('mysql:host=localhost;dbname=immobilier','root','',
 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,PDO::MYSQL_ATTR_INIT_COMMAND =>'SET NAMES utf8'));
       
         
-$bdd=>prepare(INSERT INTO logement(titre,adresse,ville,code_postal,surface,prix,type,description) VALUES(maison,7rue_du_maire,Paris,75001,250,100000,vente,ancienne),
+$bdd=>prepare (INSERT INTO logement(titre,adresse,ville,code_postal,surface,prix,photo,type,description) VALUES(maison,7rue_du_maire,Paris,75001,250,100000,vente,maison3.jpg,ancienne);
 (maison,108mondor,Creteil,94000,150,25000,vente,recent)
 (appartement,22ruelescure,Vitry,94400,110,2000,location),
 
 
 ?>
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" i
- ntegrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
 integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

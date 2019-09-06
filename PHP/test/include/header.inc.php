@@ -1,3 +1,4 @@
+<?php require_once 'init.inc.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +7,7 @@
      crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
      crossorigin="anonymous">
-    <link rel="stylesheet" href="<? = URL?>include/css/style.css">
+    <link rel="stylesheet" href="<?= URL ?>css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>test_creation_de_site</title>
@@ -21,16 +22,17 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav mr-auto">
 <?php if(internauteEstConnecte()):?>
-      <a class="nav-item nav-link active" href="<?php = URL ?>  boutique.php">Boutique <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="<?php =URL?>profil.php">profil</a>
-      <a class="nav-item nav-link" href="<?php = URL ?>panier.php">panier</a>
+      <a class="nav-item nav-link active" href="<?= URL ?>  boutique.php">Boutique <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="<?= URL?>profil.php">profil</a>
+      <a class="nav-item nav-link" href="<?= URL ?>panier.php">panier</a>
 <?php else:?>  
-            <a class="nav-item nav-link" href="<?php =URL ?>deconexion.php? action=deconnexion">deconnexion</a>
-      <a class="nav-item nav-link" href="<?php =URL ?>inscription.php">inscription</a>
-      <a class="nav-item nav-link" href="<?php =URL ?>connexion.php">">connexion</a>
+            <a class="nav-item nav-link" href="<?= URL ?>deconexion.php? action=deconnexion">deconnexion</a>
+      <a class="nav-item nav-link" href="<?= URL ?>inscription.php">inscription</a>
+      <a class="nav-item nav-link" href="<?= URL ?>connexion.php">">connexion</a>
 <?php endif;?>
 <?php if(internauteEstConnecteEstAdmin()) :?>  
       <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">annuler</a>
+<?php endif;?>
     </div>
   </div>
 </nav>  

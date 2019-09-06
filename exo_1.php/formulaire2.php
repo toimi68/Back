@@ -8,6 +8,8 @@
 
     <title>formulaire2</title>
 </head>
+
+<body>
 <?php
 
 echo'<pre>';print_r($_POST);echo'</pre>';
@@ -16,11 +18,8 @@ foreach($_POST as $key => $value)
  echo"$key, $value";   
 }
 
-
-
 ?>
-<body>
-<h1 class="col-md-6 mx-auto"><strong> PRODUIT </strong></h1><br>
+<h1 class="col-md-6 mx-3"><strong> PRODUIT </strong></h1><br>
 <form method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">titre</label>
